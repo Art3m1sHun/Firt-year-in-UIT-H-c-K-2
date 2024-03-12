@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Phanso {
+public:
+    int tuso, mauso;
+    int gcd(int tu, int mau) {
+        while (mau != 0) {
+            int temp = tu % mau;
+            tu = mau;
+            mau = temp;
+        }
+        return tu;
+    }
+    void nhap() {
+        cin >> tuso >> mauso;
+    }
+    void tinhtong(Phanso a) {
+        int Stu = (this->tuso * a.mauso + this->mauso * a.tuso);
+        int Smau = (this->mauso * a.mauso);
+        int ucln = gcd(Stu, Smau);
+        Stu /= ucln;
+        Smau /= ucln;
+        if (Stu % Smau != 0) {
+            cout << Stu << "/" << Smau;
+        }
+        else cout << Stu / Smau;
+    }
+    void tinhhieu(Phanso a) {
+        int Htu = (this->tuso * a.mauso - this->mauso * a.tuso);
+        int Hmau = (this->mauso * a.mauso);
+        int ucln = gcd(Htu, Hmau);
+        Htu /= ucln;
+        Hmau /= ucln;
+        if (Htu % Hmau != 0) {
+            cout << Htu << "/" << Hmau;
+        }
+        else cout << Htu / Hmau;
+    }
+    void tich(Phanso a) {
+        int ptu = (this->tuso * a.tuso);
+        int pmau = (this->mauso * a.mauso);
+        int ucln = gcd(ptu, pmau);
+        ptu /= ucln;
+        pmau /= ucln;
+        if (ptu % pmau != 0) {
+            cout << ptu << "/" << pmau;
+        }
+        else cout << ptu / pmau;
+    }
+    void thuong(Phanso a) {
+        int ttu = (this->tuso * a.mauso);
+        int tmau = (this->mauso * a.tuso);
+        int ucln = gcd(ttu, tmau);
+        ttu /= ucln;
+        tmau /= ucln;
+        if (ttu % tmau != 0) {
+            cout << ttu << "/" << tmau;
+        }
+        else cout << ttu / tmau;
+    }
+};
+
+
+int main()
+{
+    Phanso a, b;
+    a.nhap();
+    b.nhap();
+    a.tinhtong(b) << endl; 
+    a.tinhhieu(b)<< endl; 
+    a.tich(b)<< endl; 
+    a.thuong(b)<< endl; 
+    return 0;
+}
